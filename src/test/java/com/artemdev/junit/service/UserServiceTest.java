@@ -5,14 +5,14 @@ import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@TestInstance(TestInstance.Lifecycle.PER_METHOD)
-class UserServiceTest {
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public class UserServiceTest {
 
     private UserService userService;
 
     @BeforeAll
-    static void init() {
-        System.out.println("Before all: ");
+    void init() {
+        System.out.println("Before all: " + this);
     }
 
 
@@ -26,7 +26,7 @@ class UserServiceTest {
     void usersEmptyIfNoUserAdded() {
         System.out.println("Test 1: " + this);
         var users = userService.getAll();
-        assertTrue(users.isEmpty(), () -> "User list should be empty");
+        assertTrue(users.isEmpty(), "User list should be empty");
         // input -> [box == func] -> actual output
     }
 
@@ -46,8 +46,8 @@ class UserServiceTest {
     }
 
     @AfterAll
-    static void closeConnectionPool() {
-        System.out.println("After all: ");
+    void closeConnectionPool() {
+        System.out.println("After all: " + this);
     }
 }
 

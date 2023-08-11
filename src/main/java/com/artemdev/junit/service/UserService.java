@@ -3,7 +3,6 @@ package com.artemdev.junit.service;
 import com.artemdev.junit.dto.User;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class UserService {
